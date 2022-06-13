@@ -1,9 +1,21 @@
+import { useState } from "react";
+
 const ProjectListItem = ({ id, about, image, link, name, phase }) => {
+  const [clapCounts, setClapCounts] = useState(0);
+  const handleClap = () => {
+    setClapCounts((currentClapCount) => {
+      return (currentClapCount + 1);
+    });
+  };
+  //console.log(clapCounts);
+
   return (
     <li className="card">
       <figure className="image">
         <img src={image} alt={name} />
-        <button className="claps">👏{0}</button>
+        <button onClick={handleClap} className="claps">
+          👏{0}
+        </button>
       </figure>
 
       <section className="details">
